@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="gerar" version="24.7.17">
+  <diagram id="questao2" name="Diagrama">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1650" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="titulo" value="Checkout Internacional de Marketplace - Abstract Factory (Questão 2)" style="text;html=1;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="chk" value="&lt;b&gt;«client» Checkout&lt;/b&gt;&lt;br&gt;&lt;i&gt;- fabrica : FabricaCheckout&lt;/i&gt;&lt;br&gt;+ Checkout(fabrica)&lt;br&gt;+ finalizar(pedido) : void" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#FFE6CC;strokeColor=#FFE6CC;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="fab" value="&lt;b&gt;«AbstractFactory» FabricaCheckout&lt;/b&gt;&lt;br&gt;&lt;i&gt;interface&lt;/i&gt;&lt;br&gt;+ criarDocumentoFiscal() : DocumentoFiscal&lt;br&gt;+ criarProcessadorPagamento() : ProcessadorPagamento&lt;br&gt;+ criarGeradorEtiqueta() : GeradorEtiqueta" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#FFFFFF;strokeColor=#FFFFFF;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="180" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="df" value="&lt;b&gt;«Product» DocumentoFiscal&lt;/b&gt;&lt;br&gt;&lt;i&gt;interface&lt;/i&gt;&lt;br&gt;+ emitir(pedido) : String" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#FFFFFF;strokeColor=#FFFFFF;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="60" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pp" value="&lt;b&gt;«Product» ProcessadorPagamento&lt;/b&gt;&lt;br&gt;&lt;i&gt;interface&lt;/i&gt;&lt;br&gt;+ processar(pedido) : String" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#FFFFFF;strokeColor=#FFFFFF;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="180" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ge" value="&lt;b&gt;«Product» GeradorEtiqueta&lt;/b&gt;&lt;br&gt;&lt;i&gt;interface&lt;/i&gt;&lt;br&gt;+ gerar(pedido) : String" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#FFFFFF;strokeColor=#FFFFFF;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="300" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fbr" value="&lt;b&gt;FabricaBrasil&lt;/b&gt;&lt;br&gt;+ criarDocumentoFiscal() = NotaFiscalEletronica&lt;br&gt;+ criarProcessadorPagamento() = PagamentoPix&lt;br&gt;+ criarGeradorEtiqueta() = EtiquetaCorreios" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#DAE8FC;strokeColor=#DAE8FC;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="470" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="fde" value="&lt;b&gt;FabricaAlemanha&lt;/b&gt;&lt;br&gt;+ criarDocumentoFiscal() = VatInvoice&lt;br&gt;+ criarProcessadorPagamento() = PagamentoSepa&lt;br&gt;+ criarGeradorEtiqueta() = EtiquetaDeutschePost" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#D5E8D4;strokeColor=#D5E8D4;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="680" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="nfe" value="&lt;b&gt;NotaFiscalEletronica&lt;/b&gt;&lt;br&gt;&lt;i&gt;- ICMS = 18%&lt;/i&gt;&lt;br&gt;+ emitir() = NF-e com 18% de ICMS" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#DAE8FC;strokeColor=#DAE8FC;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="470" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pix" value="&lt;b&gt;PagamentoPix&lt;/b&gt;&lt;br&gt;+ processar() = Pix" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#DAE8FC;strokeColor=#DAE8FC;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="600" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cor" value="&lt;b&gt;EtiquetaCorreios&lt;/b&gt;&lt;br&gt;+ gerar() = etiqueta dos Correios" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#DAE8FC;strokeColor=#DAE8FC;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="700" y="700" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="vat" value="&lt;b&gt;VatInvoice&lt;/b&gt;&lt;br&gt;&lt;i&gt;- IMPOSTO = 19%&lt;/i&gt;&lt;br&gt;+ emitir() = VAT invoice com 19% de imposto" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#D5E8D4;strokeColor=#D5E8D4;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="470" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sepa" value="&lt;b&gt;PagamentoSepa&lt;/b&gt;&lt;br&gt;+ processar() = SEPA Direct Debit" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#D5E8D4;strokeColor=#D5E8D4;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="600" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dp" value="&lt;b&gt;EtiquetaDeutschePost&lt;/b&gt;&lt;br&gt;+ gerar() = etiqueta da Deutsche Post" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#D5E8D4;strokeColor=#D5E8D4;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="700" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ped" value="&lt;b&gt;«record» Pedido&lt;/b&gt;&lt;br&gt;+ id() : String&lt;br&gt;+ enderecoEntrega() : String&lt;br&gt;+ valor() : double" style="swimlane;fontSize=12;html=1;whiteSpace=wrap;startSize=32;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;fillColor=#F5F5F5;strokeColor=#F5F5F5;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="470" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="recebe no construtor (RNF02)" style="endArrow=open;endFill=0;endSize=12;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="chk" target="fab">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="finalizar(pedido)" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="chk" target="ped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="fab" target="fbr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="fab" target="fde">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="df" target="nfe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="df" target="vat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="pp" target="pix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="pp" target="sepa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="ge" target="cor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=open;endFill=0;endSize=14;dashed=1;html=1;strokeWidth=1.2;" edge="1" parent="1" source="ge" target="dp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="«instancia»" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="fbr" target="nfe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="«instancia»" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="fbr" target="pix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="«instancia»" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="fbr" target="cor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="«instancia»" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="fde" target="vat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="«instancia»" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="fde" target="sepa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="«instancia»" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="fde" target="dp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="valor()" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="nfe" target="ped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="valor()" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="vat" target="ped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="id()" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="pix" target="ped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" value="id()" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="sepa" target="ped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" value="id() e enderecoEntrega()" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="cor" target="ped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" value="id() e enderecoEntrega()" style="endArrow=open;endFill=0;endSize=12;dashed=1;dashedPattern=6 6;html=1;fontSize=10;strokeWidth=1.2;" edge="1" parent="1" source="dp" target="ped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nota1" value="Família Brasil (RF01)&lt;br&gt;azul: documento fiscal, pagamento e etiqueta" style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="700" y="800" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="nota2" value="Família Alemanha (RF02)&lt;br&gt;verde: documento fiscal, pagamento e etiqueta" style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="800" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="nota3" value="&lt;b&gt;RNF01&lt;/b&gt; - os três artefatos saem da mesma fábrica, então não há combinação entre as famílias.&lt;br&gt;&lt;b&gt;RNF02&lt;/b&gt; - Checkout recebe FabricaCheckout no construtor e não tem if/switch por país.&lt;br&gt;&lt;b&gt;RNF03&lt;/b&gt; - novo país = nova fábrica + 3 produtos. Checkout não muda." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#FFF9E6;strokeColor=#D6B656;fontSize=11;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="470" width="300" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

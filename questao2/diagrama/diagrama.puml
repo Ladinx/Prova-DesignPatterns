@@ -1,0 +1,125 @@
+@startuml diagrama
+
+title Checkout Internacional de Marketplace - Abstract Factory (Questao 2)
+
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontSize 13
+
+class Checkout <<client>> #FFE6CC {
+  - fabrica : FabricaCheckout
+  + Checkout(fabrica : FabricaCheckout)
+  + finalizar(pedido : Pedido) : void
+}
+
+interface FabricaCheckout <<AbstractFactory>> {
+  + criarDocumentoFiscal() : DocumentoFiscal
+  + criarProcessadorPagamento() : ProcessadorPagamento
+  + criarGeradorEtiqueta() : GeradorEtiqueta
+}
+
+interface DocumentoFiscal <<Product>> {
+  + emitir(pedido : Pedido) : String
+}
+
+interface ProcessadorPagamento <<Product>> {
+  + processar(pedido : Pedido) : String
+}
+
+interface GeradorEtiqueta <<Product>> {
+  + gerar(pedido : Pedido) : String
+}
+
+class FabricaBrasil #DAE8FC {
+  + criarDocumentoFiscal() = NotaFiscalEletronica
+  + criarProcessadorPagamento() = PagamentoPix
+  + criarGeradorEtiqueta() = EtiquetaCorreios
+}
+
+class FabricaAlemanha #D5E8D4 {
+  + criarDocumentoFiscal() = VatInvoice
+  + criarProcessadorPagamento() = PagamentoSepa
+  + criarGeradorEtiqueta() = EtiquetaDeutschePost
+}
+
+class NotaFiscalEletronica #DAE8FC {
+  - ICMS = 18%
+  + emitir() = NF-e com 18% de ICMS
+}
+
+class PagamentoPix #DAE8FC {
+  + processar() = Pix
+}
+
+class EtiquetaCorreios #DAE8FC {
+  + gerar() = etiqueta dos Correios
+}
+
+class VatInvoice #D5E8D4 {
+  - IMPOSTO = 19%
+  + emitir() = VAT invoice com 19% de imposto
+}
+
+class PagamentoSepa #D5E8D4 {
+  + processar() = SEPA Direct Debit
+}
+
+class EtiquetaDeutschePost #D5E8D4 {
+  + gerar() = etiqueta da Deutsche Post
+}
+
+class Pedido <<record>> #F5F5F5 {
+  + id() : String
+  + enderecoEntrega() : String
+  + valor() : double
+}
+
+note bottom of FabricaBrasil
+  Familia Brasil (RF01)
+  azul: documento fiscal, pagamento e etiqueta
+end note
+
+note bottom of FabricaAlemanha
+  Familia Alemanha (RF02)
+  verde: documento fiscal, pagamento e etiqueta
+end note
+
+note as RNF
+  RNF01 - os tres artefatos saem da mesma fabrica,
+  entao nao ha combinacao entre as familias.
+  RNF02 - Checkout recebe FabricaCheckout no
+  construtor e nao tem if/switch por pais.
+  RNF03 - novo pais = nova fabrica + 3 produtos,
+  Checkout nao muda.
+end note
+
+Checkout --> FabricaCheckout : injeta no construtor (RNF02)
+Checkout ..> Pedido : finalizar(pedido)
+
+FabricaCheckout <|.. FabricaBrasil
+FabricaCheckout <|.. FabricaAlemanha
+
+DocumentoFiscal <|.. NotaFiscalEletronica
+DocumentoFiscal <|.. VatInvoice
+ProcessadorPagamento <|.. PagamentoPix
+ProcessadorPagamento <|.. PagamentoSepa
+GeradorEtiqueta <|.. EtiquetaCorreios
+GeradorEtiqueta <|.. EtiquetaDeutschePost
+
+FabricaBrasil ..> NotaFiscalEletronica : <<instancia>>
+FabricaBrasil ..> PagamentoPix : <<instancia>>
+FabricaBrasil ..> EtiquetaCorreios : <<instancia>>
+
+FabricaAlemanha ..> VatInvoice : <<instancia>>
+FabricaAlemanha ..> PagamentoSepa : <<instancia>>
+FabricaAlemanha ..> EtiquetaDeutschePost : <<instancia>>
+
+NotaFiscalEletronica ..> Pedido : valor()
+VatInvoice ..> Pedido : valor()
+PagamentoPix ..> Pedido : id()
+PagamentoSepa ..> Pedido : id()
+EtiquetaCorreios ..> Pedido : id() e enderecoEntrega()
+EtiquetaDeutschePost ..> Pedido : id() e enderecoEntrega()
+
+@enduml
